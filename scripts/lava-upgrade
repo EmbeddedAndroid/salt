@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+
+import argparse
+
+import lava_salt
+
+
+def _indented(buff, indent_char):
+    indent_char = '\n' + indent_char
+    return '   ' + indent_char.join(buff.split('\n'))
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=lava_salt.upgrade.__doc__)
+    parser.add_argument('instance', metavar='<instance>',
+                        help='The instance name to upgrade')
+    parser.add_argument('--dry-run', dest='dryrun', action='store_true',
+                        help='Just display what would be changed')
+    args = parser.parse_args()
+
+    client = lava_salt.salt_client()
+    m_ret, w_ret = lava_salt.upgrade(client, args.instance, args.dryrun)
+
+    print 'Master:'
+    for host, msg in m_ret.iteritems():
+        print ' {0}:'.format(host)
+        print '  upgrade:\n{0}'.format(_indented(msg, '   |'))
+
+    print '\nWorkers:'
+    for host, rets in w_ret.iteritems():
+        print ' {0}:'.format(host)
+        print '  stop:\n{0}'.format(_indented(rets['stop'], '   |'))
+        print '  upgrade:\n{0}'.format(_indented(rets['upgrade'], '   |'))
+        print '  start:\n{0}'.format(_indented(rets['start'], '   |'))

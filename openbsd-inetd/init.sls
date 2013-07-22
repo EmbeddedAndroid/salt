@@ -1,0 +1,3 @@
+openbsd-inetd:
+  pkg:
+    - installed

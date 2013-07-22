@@ -1,0 +1,8 @@
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A4001aec", SYMLINK+="panda-es0"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A4001aee", SYMLINK+="beagle-xm0"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A4001auN", SYMLINK+="arndale0"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A4001aGB", SYMLINK+="serialgear3"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTAKL6WF", SYMLINK+="beaglebone-black0"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", ATTRS{manufacturer}=="Prolific Technology Inc.", SYMLINK+="panda-es1"
+KERNEL=="ttyUSB*", ATTRS{interface}=="Quad RS232-HS", ATTRS{bInterfaceNumber}=="00", SYMLINK+="bcm-capri0"
+KERNEL=="ttyUSB*", ATTRS{interface}=="BeagleBone/XDS100V2", ATTRS{bInterfaceNumber}=="01", SYMLINK+="beaglebone0"

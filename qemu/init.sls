@@ -1,0 +1,3 @@
+qemu-system:
+  pkg:
+    - installed
