@@ -16,3 +16,4 @@ salt://lava/devices/{{ grains['id'] }}:
   file.recurse:
     - source: salt://lava/lab-scripts
     - file_mode: 755
+    - clean: True
