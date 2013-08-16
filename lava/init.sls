@@ -11,6 +11,7 @@ salt://lava/devices/{{ grains['id'] }}:
   file.recurse:
     - source: salt://lava/device-types
     - clean: True
+    - include_empty: True
 {% endfor %}
 
 /usr/local/lab-scripts:
@@ -18,3 +19,4 @@ salt://lava/devices/{{ grains['id'] }}:
     - source: salt://lava/lab-scripts
     - file_mode: 755
     - clean: True
+    - include_empty: True
