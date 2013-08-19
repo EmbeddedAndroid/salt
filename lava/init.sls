@@ -9,6 +9,7 @@ salt://lava/devices/{{ grains['id'] }}:
 {% for inst in salt['lava.list_instances']() %}
 {{ inst }}/etc/lava-dispatcher/device-types:
   file.recurse:
+    - name {{ inst }}/etc/lava-dispatcher/device-types
     - source: salt://lava/device-types
     - clean: True
     - include_empty: True
