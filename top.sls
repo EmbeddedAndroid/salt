@@ -13,3 +13,4 @@ base:
     - tftpd-hpa
     - qemu
     - snmp
+    - bridge-utils
