@@ -14,3 +14,4 @@ base:
     - qemu
     - snmp
     - bridge-utils
+    - lava.coordinator
