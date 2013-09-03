@@ -1,0 +1,3 @@
+salt-minion:
+  pkg:
+    - latest

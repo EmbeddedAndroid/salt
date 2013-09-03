@@ -1,0 +1,3 @@
+salt-master:
+  pkg:
+    - latest
