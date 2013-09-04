@@ -1,3 +1,3 @@
 openbsd-inetd:
   pkg:
-    - installed
+    - latest

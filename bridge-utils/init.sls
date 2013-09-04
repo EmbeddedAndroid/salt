@@ -1,3 +1,3 @@
 bridge-utils:
   pkg:
-    - installed
+    - latest

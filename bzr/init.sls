@@ -1,3 +1,3 @@
 bzr:
   pkg:
-    - installed
+    - latest

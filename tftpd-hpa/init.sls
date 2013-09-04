@@ -1,6 +1,6 @@
 tftpd-hpa:
   pkg:
-    - installed
+    - latest
   file.managed:
     - source: salt://tftpd-hpa/tftpd-hpa
     - name: /etc/default/tftpd-hpa

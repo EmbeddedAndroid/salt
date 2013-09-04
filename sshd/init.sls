@@ -1,6 +1,6 @@
 openssh-server:
   pkg:
-    - installed
+    - latest
 
 ssh:
   service:

@@ -1,3 +1,3 @@
-qemu-system:
+linaro-image-tools:
   pkg:
     - latest

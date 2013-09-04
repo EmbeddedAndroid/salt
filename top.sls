@@ -13,6 +13,7 @@ base:
     - tftpd-hpa
     - qemu
     - snmp
+    - lit
     - bridge-utils
     - salt-minion
     - lava.coordinator

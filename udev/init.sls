@@ -1,6 +1,6 @@
 udev:
   pkg:
-    - installed
+    - latest
   file.managed:
     - source: salt://udev/99-usb-serial.rules
     - name: /etc/udev/rules.d/99-usb-serial.rules

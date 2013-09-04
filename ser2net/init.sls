@@ -1,6 +1,6 @@
 ser2net:
   pkg:
-    - installed
+    - latest
   file.managed:
     - source: salt://ser2net/ser2net.conf
     - name: /etc/ser2net.conf
