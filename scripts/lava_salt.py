@@ -113,13 +113,16 @@ def upgrade(client, instance, dry_run=True):
             w_ret[host]['stop'] = msg
 
     # now upgrade the master node
-    cmd = 'export SKIP_ROOT_CHECK=yes; {0} upgrade {1}'.format(LDT, instance)
-    m_ret = client.cmd(master, 'cmd.run', [cmd], timeout=timeout)
+    skip_root_check = 'env={SKIP_ROOT_CHECK: "yes"}'
+    client.cmd(master, 'cmd.run', ['{0} setup'.format(LDT), skip_root_check])
+    cmd = '{0} upgrade {1}'.format(LDT, instance)
+    m_ret = client.cmd(master, 'cmd.run', [cmd, skip_root_check], timeout=timeout)
 
     # now upgrade the workers
-    cmd = 'export SKIP_ROOT_CHECK=yes; {0} upgradeworker {1}'.format(LDT, instance)
+    cmd = '{0} upgradeworker {1}'.format(LDT, instance)
     if len(workers):
-        ret = client.cmd(workers, 'cmd.run', [cmd], timeout=timeout, expr_form='list')
+        client.cmd(workers, 'cmd.run', ['{0} setupworker'.format(LDT), skip_root_check])
+        ret = client.cmd(workers, 'cmd.run', [cmd, skip_root_check], timeout=timeout, expr_form='list')
         for host, msg in ret.iteritems():
             w_ret[host]['upgrade'] = msg
 
@@ -185,18 +188,22 @@ def add_worker(client, minion, minion_ip, instance, dry_run=True):
     if not args['dbserver']:
         args['dbserver'] = args['LAVA_SERVER_IP']
 
-    cmd = ('SKIP_ROOT_CHECK=yes '
-           'LAVA_DB_SERVER={dbserver} LAVA_DB_NAME={dbname} '
-           'LAVA_DB_USER={dbuser} LAVA_DB_PASSWORD={dbpass} '
-           'LAVA_REMOTE_FS_HOST={LAVA_SERVER_IP} '
-           'LAVA_REMOTE_FS_USER={LAVA_SYS_USER} LAVA_REMOTE_FS_DIR={masterdir} '
-           'LAVA_PROXY="{LAVA_PROXY}" LAVA_SERVER_IP={workerip} '
-           '{ldt} installworker -n {instance} 2>&1 | tee /tmp/ldt.log'.format(**args))
+    cmd = ('{ldt} installworker -n {instance} 2>&1 | tee /tmp/ldt.log'.format(**args))
+    env = 'env={ SKIP_ROOT_CHECK: "yes", '\
+            'LAVA_DB_SERVER: "{dbserver}", ' \
+            'LAVA_DB_NAME": "{dbname}", ' \
+            'LAVA_DB_USER: "{dbuser}", ' \
+            'LAVA_DB_PASSWORD: "{dbpass}", ' \
+            'LAVA_REMOTE_FS_HOST: "{LAVA_SERVER_IP}", ' \
+            'LAVA_REMOTE_FS_USER: "{LAVA_SYS_USER}", ' \
+            'LAVA_REMOTE_FS_DIR: "{masterdir}", ' \
+            'LAVA_PROXY: "{LAVA_PROXY}", ' \
+            'LAVA_SERVER_IP: "{workerip}" }'.format(**args)
 
     if dry_run:
-        return {minion: 'dry-run: {0}'.format(cmd)}
+        return {minion: 'dry-run: {0}, {1}'.format(cmd, env)}
 
-    ret = client.cmd(minion, 'cmd.run', [cmd], timeout=600)
+    ret = client.cmd(minion, 'cmd.run', [cmd, env], timeout=600)
 
     # l-d-t ran as root, lets chmod things
     cmd = 'chown -R instance-manager:instance-manager /srv/lava/instances/{0}/code/*'.format(instance)
