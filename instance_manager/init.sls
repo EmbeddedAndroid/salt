@@ -21,9 +21,7 @@ instance-manager:
       - group: root
       - mode: 755
 
-lp:lava-deployment-tool:
-  bzr.latest:
+http://git.linaro.org/git-ro/lava/lava-deployment-tool.git:
+  git.latest:
     - target: /home/instance-manager/lava-deployment-tool
-    - runas: instance-manager
-    - require:
-      - user: instance-manager
+    - force: yes
