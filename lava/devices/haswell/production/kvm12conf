@@ -1,0 +1,3 @@
+device_type = kvm
+root_part = 1
+kvm_networking_options = -net nic,macaddr=52:54:00:00:00:12,model=virtio -net tap
