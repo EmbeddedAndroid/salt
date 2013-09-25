@@ -114,14 +114,14 @@ def upgrade(client, instance, dry_run=True):
 
     # now upgrade the master node
     skip_root_check = 'env={SKIP_ROOT_CHECK: "yes"}'
-    client.cmd(master, 'cmd.run', ['{0} setup'.format(LDT), skip_root_check])
+    client.cmd(master, 'cmd.run', ['{0} setup -n'.format(LDT), skip_root_check])
     cmd = '{0} upgrade {1}'.format(LDT, instance)
     m_ret = client.cmd(master, 'cmd.run', [cmd, skip_root_check], timeout=timeout)
 
     # now upgrade the workers
     cmd = '{0} upgradeworker {1}'.format(LDT, instance)
     if len(workers):
-        client.cmd(workers, 'cmd.run', ['{0} setupworker'.format(LDT), skip_root_check])
+        client.cmd(workers, 'cmd.run', ['{0} setupworker -n'.format(LDT), skip_root_check])
         ret = client.cmd(workers, 'cmd.run', [cmd, skip_root_check], timeout=timeout, expr_form='list')
         for host, msg in ret.iteritems():
             w_ret[host]['upgrade'] = msg
