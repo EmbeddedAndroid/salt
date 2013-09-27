@@ -54,7 +54,7 @@ def _download(url, tmpdir):
 
 def _replace(path, tmpdir, tball, md5sum):
     subprocess.check_call(
-        ['tar', '--strip-components=1', '-x', '-f', tball], cwd=tmpdir)
+        ['tar', '-x', '-f', tball], cwd=tmpdir)
     os.unlink(tball)
     with open(os.path.join(tmpdir, MD5SUM_FILE), 'w') as f:
         f.write(md5sum)
