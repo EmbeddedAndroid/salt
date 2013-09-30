@@ -29,7 +29,7 @@ else
 fi
 PATH=.:/sbin:/usr/sbin:/bin:/usr/bin
 user="www-data"
-INTERFACES="01 02"
+INTERFACES="01 02 03 04"
 NIC=eth0
 PREFIX=armv8_
 BRIDGE=br0

@@ -14,6 +14,7 @@ base:
     - qemu
     - snmp
     - lit
+    - ia32-libs
     - bridge-utils
     - salt-minion
     - lava.coordinator
