@@ -21,7 +21,7 @@ instance-manager:
       - group: root
       - mode: 755
 
-http://git.linaro.org/git-ro/lava/lava-deployment-tool.git:
+http://git.linaro.org/git/lava/lava-deployment-tool.git:
   git.latest:
     - target: /home/instance-manager/lava-deployment-tool
     - force: yes
