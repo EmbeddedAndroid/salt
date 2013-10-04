@@ -2,7 +2,7 @@
 /opt/arm:
   url.sync_extract:
     - url: http://192.168.1.2/images/models/arm_models-2013-10-03.tgz
-    - md5sum: 7fdf3a677cf40601bb4190ddecef7de1
+    - md5sum: 20eb476be7d0ef644117a5da8dccea07
     - user: root
     - group: root
     - mode: 755
