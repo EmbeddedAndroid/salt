@@ -4,5 +4,6 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{seria
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A4001aGB", SYMLINK+="i5x86"
 SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="FTAKL6WF", SYMLINK+="beaglebone-black0"
 SUBSYSTEM=="tty", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", ATTRS{manufacturer}=="Prolific Technology Inc.", SYMLINK+="amdx86"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="06cd", ATTRS{idProduct}=="0121", ATTRS{manufacturer}=="Keyspan, a division of InnoSys Inc.", SYMLINK+="keyspan"
 KERNEL=="ttyUSB*", ATTRS{interface}=="Quad RS232-HS", ATTRS{bInterfaceNumber}=="00", SYMLINK+="bcm-capri0"
 KERNEL=="ttyUSB*", ATTRS{interface}=="BeagleBone/XDS100V2", ATTRS{bInterfaceNumber}=="01", SYMLINK+="beaglebone0"
