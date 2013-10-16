@@ -6,6 +6,10 @@
 
 /etc/lava-coordinator/lava-coordinator.conf:
   file.managed:
-    - source: salt://lava/coordinator/lava-coordinator.conf
+    {% if grains['id'] == 'ubuntu'%}
+    - source: salt://lava/coordinator/lava-coordinator-staging.conf
+    {% else %}
+    - source: salt://lava/coordinator/lava-coordinator-production.conf
+    {% endif %}
     - owner: root
     - mode: 644
