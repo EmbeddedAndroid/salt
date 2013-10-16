@@ -2,7 +2,11 @@ tftpd-hpa:
   pkg:
     - latest
   file.managed:
-    - source: salt://tftpd-hpa/tftpd-hpa
+    {% if grains['id'] == 'ubuntu'%}
+    - source: salt://tftpd-hpa/tftpd-hpa-staging
+    {% else %}
+    - source: salt://tftpd-hpa/tftpd-hpa-production
+    {% endif %}
     - name: /etc/default/tftpd-hpa
     - owner: root
     - mode: 600
