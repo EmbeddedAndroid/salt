@@ -3,9 +3,9 @@ nfs-kernel-server:
     - latest
   file.managed:
     {% if grains['id'] == 'ubuntu'%}
-    - source: salt://nfs/exports-staging
+    - source: salt://nfs/nfs-staging
     {% else %}
-    - source: salt://nfs/exports-production
+    - source: salt://nfs/nfs-production
     {% endif %}
     - name: /etc/exports
     - owner: root
