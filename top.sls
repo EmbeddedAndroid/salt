@@ -11,6 +11,7 @@ base:
     - fastboot
     - openbsd-inetd
     - tftpd-hpa
+    - nfs
     - qemu
     - snmp
     - lit
