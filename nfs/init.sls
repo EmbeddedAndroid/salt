@@ -1,6 +1,17 @@
 nfs-kernel-server:
   pkg:
     - latest
+  service.running:
+    - enable: True
+    - watch:
+      - file: exports
+      - pkg: nfs-kernel-server
+
+rpcbind:
+  pkg:
+    - latest
+
+exports:
   file.managed:
     {% if grains['id'] == 'ubuntu'%}
     - source: salt://nfs/nfs-staging
@@ -13,15 +24,6 @@ nfs-kernel-server:
     - mode: 644
     - require:
       - pkg: nfs-kernel-server
-  service.running:
-    - enable: True
-    - watch:
-      - file: /etc/exports
-      - pkg: nfs-kernel-server
-
-rpcbind:
-  pkg:
-    - latest
 
 update_exports:
   cmd.run:
@@ -29,4 +31,4 @@ update_exports:
     - require:
       - pkg: nfs-kernel-server
     - watch:
-      - file: /etc/exports
+      - file: exports
