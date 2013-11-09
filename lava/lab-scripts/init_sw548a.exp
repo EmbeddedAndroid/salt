@@ -60,6 +60,7 @@ send "3\r"
 sleep 1
 expect -exact "---------------"
 send "192.168.1.1\r"
+sleep 1
 expect "<ESC> exit ..."
 # Set Telnet timeout to OFF
 send "14\r"
