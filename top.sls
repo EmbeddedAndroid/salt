@@ -14,6 +14,7 @@ base:
     - nfs
     - qemu
     - snmp
+    - expect
     - lit
     - ia32-libs
     - bridge-utils

@@ -1,0 +1,54 @@
+#!/usr/bin/expect
+set timeout 60
+spawn telnet 192.168.1.4 2009
+# Send a carriage return to reveal the command mode prompt
+send "\r"
+send "\r"
+send "\r"
+expect "CMS>"
+# Set all port parameters
+send "/CP\r"
+expect "<ESC> to copy to ports and exit ..."
+# Set Handshake mode to None
+send "6\r"
+expect "<ESC> for previous menu ..."
+send "1\r"
+expect "<ESC> to copy to ports and exit ..."
+# Set Direct Connect to ON
+send "15\r"
+expect "<ESC> for previous menu ..."
+send "2\r"
+expect "<ESC> to copy to ports and exit ..."
+# Set Timeout Disconnect to OFF
+send "11\r"
+expect "<ESC> for previous menu ..."
+send "1\r"
+expect "<ESC> to copy to ports and exit ..."
+send "\033"
+expect "Are you sure (y/n)?"
+send "y\r"
+expect "CMS>"
+# Setup Network Configuration
+send "/N\r"
+expect "<ESC> exit ..."
+# Setup IP Address
+send "1\r"
+expect -exact "---------------"
+send "192.168.1.14\r"
+expect "<ESC> exit ..."
+# Setup Netmask
+send "2\r"
+expect -exact "---------------"
+send "255.255.255.0\r"
+expect "<ESC> exit ..."
+# Setup Gateway
+send "3\r"
+expect -exact "---------------"
+send "192.168.1.1\r"
+expect "<ESC> exit ..."
+# Set Telnet timeout to OFF
+send "14\r"
+expect "<ESC> for previous menu ..."
+send "1\r"
+send "\033"
+expect "CMS>"
