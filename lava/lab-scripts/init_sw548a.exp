@@ -8,47 +8,65 @@ send "\r"
 expect "CMS>"
 # Set all port parameters
 send "/CP\r"
+sleep 1
 expect "<ESC> to copy to ports and exit ..."
 # Set Handshake mode to None
 send "6\r"
+sleep 1
 expect "<ESC> for previous menu ..."
 send "1\r"
+sleep 1
 expect "<ESC> to copy to ports and exit ..."
 # Set Direct Connect to ON
 send "15\r"
+sleep 1
 expect "<ESC> for previous menu ..."
 send "2\r"
+sleep 1
 expect "<ESC> to copy to ports and exit ..."
 # Set Timeout Disconnect to OFF
 send "11\r"
+sleep 1
 expect "<ESC> for previous menu ..."
 send "1\r"
+sleep 1
 expect "<ESC> to copy to ports and exit ..."
 send "\033"
+sleep 1
 expect "Are you sure (y/n)?"
 send "y\r"
+sleep 1
 expect "CMS>"
 # Setup Network Configuration
 send "/N\r"
+sleep 1
 expect "<ESC> exit ..."
 # Setup IP Address
 send "1\r"
+sleep 1
 expect -exact "---------------"
 send "192.168.1.14\r"
+sleep 1
 expect "<ESC> exit ..."
 # Setup Netmask
 send "2\r"
+sleep 1
 expect -exact "---------------"
 send "255.255.255.0\r"
+sleep 1
 expect "<ESC> exit ..."
 # Setup Gateway
 send "3\r"
+sleep 1
 expect -exact "---------------"
 send "192.168.1.1\r"
 expect "<ESC> exit ..."
 # Set Telnet timeout to OFF
 send "14\r"
+sleep 1
 expect "<ESC> for previous menu ..."
 send "1\r"
+sleep 1
 send "\033"
+sleep 1
 expect "CMS>"
