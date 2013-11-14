@@ -1,8 +1,8 @@
 # allows syncing of our ARM model simulators
 /opt/arm:
   url.sync_extract:
-    - url: http://192.168.1.2/images/models/arm_models-2013-10-03.tgz
-    - md5sum: 20eb476be7d0ef644117a5da8dccea07
+    - url: http://192.168.1.2/images/models/arm_models-2013-11-13.tgz
+    - md5sum: 74ca3cbc9c30d7544d2f392fa3518c66
     - user: root
     - group: root
     - mode: 755
