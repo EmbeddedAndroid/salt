@@ -16,4 +16,6 @@ if __name__ == '__main__':
     for host, props in lava_salt.info(client, args.instance).iteritems():
         running = lava_salt.STATE_STRING[props['running']]
         master = props['master']
-        print '{0}: running({1}) master({2})'.format(host, running, master)
+	dispatcher = props['dispatcher']
+	server = props['server']
+        print '{0}: running({1}) master({2}) dispatcher-version:({3}) server-version:({4})'.format(host, running, master, dispatcher, server)
