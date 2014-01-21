@@ -45,7 +45,7 @@ expect "<ESC> exit ..."
 send "1\r"
 sleep 1
 expect -exact "---------------"
-send "192.168.1.14\r"
+send "192.168.1.24\r"
 sleep 1
 expect "<ESC> exit ..."
 # Setup Netmask
