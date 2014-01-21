@@ -1,6 +1,6 @@
 #!/usr/bin/expect
 set timeout 60
-spawn telnet 192.168.1.4 2009
+spawn telnet lava-worker-3 2009
 # Send a carriage return to reveal the command mode prompt
 send "\r"
 send "\r"
