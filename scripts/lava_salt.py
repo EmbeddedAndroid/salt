@@ -39,10 +39,8 @@ def info(client, instance):
 
             ret = client.cmd(k, 'file.file_exists', [worker_file])
             master = not ret[k]
-            server_ret = client.cmd(k, 'cmd.run', ["grep lava-server /srv/lava/instances/%s/bin/lava-server|grep git-cache" % instance])
-            dispatcher_ret = client.cmd(k, 'cmd.run', ["grep dispatch /srv/lava/instances/%s/bin/lava-dispatch" % instance])
-            server = server_ret[k].split("'")[1].replace("/srv/lava/.cache/git-cache/exports/lava-server/", "")
-            dispatcher = dispatcher_ret[k].split("\"")[1].replace("/srv/lava/instances/%s/code/" % instance,"").replace("/bin/lava", "")
+            server = client.cmd(k, 'cmd.run', ["cat /srv/lava/instances/%s/code/current/develop-eggs/lava-server.egg-link | xargs basename" % instance])[k].strip()
+            dispatcher = client.cmd(k, 'cmd.run', ["cat /srv/lava/instances/%s/code/current/develop-eggs/lava-dispatcher.egg-link | xargs basename" % instance])[k].strip()
             inf[k] = {'running': running, 'master': master, 'dispatcher':dispatcher, 'server':server}
     return inf
 
