@@ -18,6 +18,3 @@ ftp:
             {% else %}
             - file.directory: /srv/lava/instances/production/var/www/lava-server/images/
             {% endif %}
-    service.running: 
-        - name: vsftpd
-        - restart: True
