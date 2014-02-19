@@ -5,13 +5,13 @@ then
         if [ "$#" -eq 3 ]
         then
 		echo "BANK 1: Controlling Port: $2"
-		snmpset -v1 -c private 192.168.1.13 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.$2 i $3
+		snmpset -v1 -c private $1 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.$2 i $3
         elif [ "$#" -eq 2 ]
         then
 		echo "BANK 1: Resetting Port: $2"
-		snmpset -v1 -c private 192.168.1.13 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.$2 i 2
+		snmpset -v1 -c private $1 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.$2 i 2
                 sleep 10
-	        snmpset -v1 -c private 192.168.1.13 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.$2 i 1
+	        snmpset -v1 -c private $1 .1.3.6.1.4.1.318.1.1.12.3.3.1.1.4.$2 i 1
         else
 		echo "Too many arguments"
         fi
