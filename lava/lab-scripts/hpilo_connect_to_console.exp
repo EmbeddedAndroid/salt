@@ -1,0 +1,8 @@
+#!/usr/bin/expect
+set timeout 60
+spawn ssh -o StrictHostKeyChecking=no linaro@hpilo01
+expect "*?assword:*"
+send "linaro-leg\n"
+expect "hpiLO->"
+send "CONNECT NODE VSP [lindex $argv 0]\n"
+interact
