@@ -1,3 +1,0 @@
-# managed by salt
-# gives the instance manager user sudo without password for common commands
-instance-manager ALL=(ALL) NOPASSWD:ALL

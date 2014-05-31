@@ -1,2 +1,0 @@
-#!/bin/sh
-exec sudo -u instance-manager -s -H

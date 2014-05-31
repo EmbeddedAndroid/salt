@@ -1,26 +1,16 @@
 base:
-  '*':
-    - sshd
-    - udev
-    - instance_manager
-    - bzr
+
+  'lava-master':
     - lava
-    - ser2net
-    - lava.fastmodels
-    - adb
-    - fastboot
-    - openbsd-inetd
-    - tftpd-hpa
-    - vsftpd
-    - nfs
-    - qemu
+    - snmp
+    - expect
+
+  'lava-worker-*':
+    - match: pcre
+    - udev
+    - lava
     - snmp
     - expect
     - lit
-    - ia32-libs
-    - bridge-utils
-    - salt-minion
     - lava.coordinator
 
-  'vps-1140700-17880.manage.myhosting.com':
-    - salt-master
