@@ -7,8 +7,13 @@ base:
 
   'lava-worker-*':
     - match: pcre
+    - adb
+    - fastboot
     - udev
+    - lit
     - lava
+    - nfs
+    - vsftpd
     - snmp
     - expect
     - lit

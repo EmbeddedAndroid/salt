@@ -1,3 +1,0 @@
-qemu-system:
-  pkg:
-    - latest

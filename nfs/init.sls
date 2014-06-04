@@ -13,11 +13,7 @@ rpcbind:
 
 exports:
   file.managed:
-    {% if grains['id'] == 'ubuntu'%}
-    - source: salt://nfs/nfs-staging
-    {% else %}
-    - source: salt://nfs/nfs-production
-    {% endif %}
+    - source: salt://nfs/nfs-exports
     - name: /etc/exports
     - owner: root
     - group: root
