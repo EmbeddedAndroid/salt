@@ -19,3 +19,6 @@ base:
     - lit
     - lava.coordinator
 
+  'lava-worker-03':
+    - bridge-utils
+    - lava.fastmodels
