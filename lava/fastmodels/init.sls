@@ -1,8 +1,8 @@
 # allows syncing of our ARM model simulators
 /opt/arm:
   url.sync_extract:
-    - url: http://images-private.armcloud.us/models/arm_models-2014-01-22.tgz
-    - md5sum: 1d2011ce025fb7881c064206e040a34a
+    - url: http://images-private.armcloud.us/models/arm_models-2014-06-06.tgz
+    - md5sum: e5bd51f0761098e95dbaf318117fd2b2
     - user: root
     - group: root
     - mode: 755
